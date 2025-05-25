@@ -1,55 +1,55 @@
-# NTP Server em Go
+# NTP Server in Go
 
-Este projeto implementa um servidor NTP (Network Time Protocol) simples utilizando a linguagem Go. Ele permite que dispositivos em uma rede local consultem a data e hora do servidor, ideal para ambientes de laboratório, testes ou redes isoladas.
+This project implements a simple NTP (Network Time Protocol) server using the Go programming language. It allows devices on a local network to query the server's date and time, making it ideal for lab environments, testing, or isolated networks.
 
-## Recursos
+## Features
 
-- **Servidor NTP básico:** Atende requisições NTP padrão (porta UDP 123) e responde com a hora local do sistema.
-- **Log de acessos:** Registra cada consulta feita ao servidor, incluindo data e hora, IP do cliente e nome do host (quando possível), em um arquivo `ntp_access.log`.
-- **Código simples e didático:** Fácil de entender, modificar e expandir para necessidades locais ou laboratoriais.
+- **Basic NTP server:** Handles standard NTP requests (UDP port 123) and responds with the system's local time.
+- **Access log:** Records each query made to the server, including date and time, client IP, and hostname (when possible), in a `ntp_access.log` file.
+- **Simple and educational code:** Easy to understand, modify, and expand for local or lab needs.
 
-## Avisos
+## Warnings
 
-> **Importante:** Este servidor NTP é destinado apenas para uso em ambientes controlados, redes locais ou para fins educacionais. Não utiliza autenticação, não sincroniza com fontes externas de tempo e não implementa todas as funcionalidades do NTP padrão.  
-> **Não utilize em ambientes de produção ou onde a precisão e segurança do tempo sejam críticas.**
+> **Important:** This NTP server is intended for use only in controlled environments, local networks, or for educational purposes. It does not use authentication, does not synchronize with external time sources, and does not implement all standard NTP features.  
+> **Do not use in production environments or where time accuracy and security are critical.**
 
-## Como Buildar
+## How to Build
 
-O projeto utiliza um `Makefile` para facilitar o processo de build em diferentes plataformas.
+The project uses a `Makefile` to simplify the build process for different platforms.
 
-### Pré-requisitos
+### Prerequisites
 
-- Go 1.16 ou superior instalado ([download aqui](https://go.dev/dl/))
-- `make` instalado (disponível nativamente na maioria dos sistemas Unix; no Windows, pode ser usado via [Gow](https://github.com/bmatzelle/gow) ou [GnuWin](http://gnuwin32.sourceforge.net/packages/make.htm))
+- Go 1.16 or higher installed ([download here](https://go.dev/dl/))
+- `make` installed (available natively on most Unix systems; on Windows, you can use [Gow](https://github.com/bmatzelle/gow) or [GnuWin](http://gnuwin32.sourceforge.net/packages/make.htm))
 
-### Build usando Makefile
-Use `make all` para compilar o projeto para as principais plataformas.
+### Build using Makefile
+Use `make all` to compile the project for the main platforms.
 
-Para compilar apenas para uma plataforma específica, utilize `make {plataforma}`.  
-Opções disponíveis: `linux`, `windows`, `mac`, `mac-arm`.
+To compile for a specific platform only, use `make {platform}`.  
+Available options: `linux`, `windows`, `mac`, `mac-arm`.
 
-Para remover os binários gerados, execute `make clean`.
+To remove generated binaries, run `make clean`.
 
-## Como Usar
+## How to Use
 
-1. Compile conforme acima para sua plataforma.
-2. Execute como administrador/root (porta 123 é privilegiada):
+1. Compile as above for your platform.
+2. Run as administrator/root (port 123 is privileged):
    ```sh
    sudo ./ntp-server
    ```
-   No Windows, execute o terminal como administrador.
+   On Windows, run the terminal as administrator.
 
-3. Clientes NTP podem agora consultar a hora do servidor usando o IP/máquina onde o `ntp-server` está rodando.
+3. NTP clients can now query the server time using the IP/machine where `ntp-server` is running.
 
-4. Consulte o arquivo `ntp_access.log` para visualizar os acessos realizados.
+4. Check the `ntp_access.log` file to view access logs.
 
-## Exemplo de Log
+## Log Example
 
 ```
-2025/05/24 16:01:12 Hora consultada em 2025-05-24 16:01:12 por 192.168.0.10 (hostname: workstation-10.local)
-2025/05/24 16:05:43 Hora consultada em 2025-05-24 16:05:43 por 192.168.0.23 (hostname: -)
+2025/05/24 16:01:12 Time queried at 2025-05-24 16:01:12 by 192.168.0.10 (hostname: workstation-10.local)
+2025/05/24 16:05:43 Time queried at 2025-05-24 16:05:43 by 192.168.0.23 (hostname: -)
 ```
 
 ---
 
-Feito com ❤️ pela Bi-Ga Tech
+Made with ❤️ by Bi-Ga Tech
