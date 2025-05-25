@@ -15,50 +15,20 @@ Este projeto implementa um servidor NTP (Network Time Protocol) simples utilizan
 
 ## Como Buildar
 
-O projeto é escrito em Go puro e não possui dependências externas além da biblioteca padrão.
+O projeto utiliza um `Makefile` para facilitar o processo de build em diferentes plataformas.
 
 ### Pré-requisitos
 
 - Go 1.16 ou superior instalado ([download aqui](https://go.dev/dl/))
+- `make` instalado (disponível nativamente na maioria dos sistemas Unix; no Windows, pode ser usado via [Gow](https://github.com/bmatzelle/gow) ou [GnuWin](http://gnuwin32.sourceforge.net/packages/make.htm))
 
-### Build para cada plataforma
+### Build usando Makefile
+Use `make all` para compilar o projeto para as principais plataformas.
 
-#### Linux
+Para compilar apenas para uma plataforma específica, utilize `make {plataforma}`.  
+Opções disponíveis: `linux`, `windows`, `mac`, `mac-arm`.
 
-```sh
-go build -o ntp-server main.go
-```
-
-#### Windows
-
-```sh
-go build -o ntp-server.exe main.go
-```
-
-#### macOS
-
-```sh
-go build -o ntp-server main.go
-```
-
-#### Cross-compile para outras plataformas
-
-Você pode compilar para diferentes sistemas operacionais e arquiteturas utilizando as variáveis de ambiente do Go:
-
-- **Para Windows 64 bits:**
-  ```sh
-  GOOS=windows GOARCH=amd64 go build -o ntp-server.exe main.go
-  ```
-- **Para Linux 64 bits:**
-  ```sh
-  GOOS=linux GOARCH=amd64 go build -o ntp-server main.go
-  ```
-- **Para macOS ARM64 (Apple Silicon):**
-  ```sh
-  GOOS=darwin GOARCH=arm64 go build -o ntp-server main.go
-  ```
-
-Veja todas as opções de sistemas e arquiteturas suportadas em: https://golang.org/doc/install/source#environment
+Para remover os binários gerados, execute `make clean`.
 
 ## Como Usar
 

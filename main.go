@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/binary"
+	"fmt"
 	"log"
 	"net"
 	"os"
@@ -92,4 +93,5 @@ func logRequest(addr *net.UDPAddr) {
 	}
 	now := time.Now().Format("2006-01-02 15:04:05")
 	logger.Printf("Hora consultada em %s por %s (hostname: %s)\n", now, ip, hostname)
+	go fmt.Printf("Hora consultada em %s por %s (hostname: %s)\n", now, ip, hostname)
 }
